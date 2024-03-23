@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { formatDate } from "@/lib/utils"
 
 interface EmailContentProps {
   subject: string
@@ -23,24 +24,25 @@ const EmailContentCard = ({
   toEmail,
   body,
 }: EmailContentProps) => {
-  const convertedDate = new Date(date)
-  const dateString = convertedDate.toLocaleDateString()
+  const formattedDate = formatDate(new Date(date))
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex justify-between text-lg">
-          <span>{subject}</span>
-          <span>{date}</span>
-        </CardTitle>
-        <CardDescription>
-          <p>from : {fromEmail} cc: lennon.j@mail.com</p>
-          <p>to : {toEmail}</p>
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>{body}</p>
-      </CardContent>
-    </Card>
+    <div className="m-2">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex justify-between text-lg">
+            <span>{subject}</span>
+            <span>{formattedDate}</span>
+          </CardTitle>
+          <CardDescription>
+            <p>from : {fromEmail} cc: lennon.j@mail.com</p>
+            <p>to : {toEmail}</p>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p>{body}</p>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
 

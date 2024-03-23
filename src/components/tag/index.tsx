@@ -18,7 +18,7 @@ const Tag = ({ type }: TagProps) => {
           className={cn("h-2 w-2 rounded-full p-1", "bg-green-400 shadow-xl")}
         ></div>
       </div>
-      <div className="text-green-500">{type}</div>
+      <div className="text-green-500 capitalize">{type}</div>
     </div>
   )
 }
