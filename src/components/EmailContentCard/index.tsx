@@ -38,9 +38,7 @@ const EmailContentCard = ({
             <p>to : {toEmail}</p>
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <p>{body}</p>
-        </CardContent>
+        <CardContent>{body}</CardContent>
       </Card>
     </div>
   )

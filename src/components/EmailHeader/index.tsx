@@ -1,5 +1,7 @@
 import React from "react"
 import LeadStatus from "./LeadStatus"
+import EmailActions from "./EmailActions"
+import EmailSettings from "./EmailSettings"
 
 const EmailHeader = () => {
   return (
@@ -8,8 +10,10 @@ const EmailHeader = () => {
         <h1>Orlando</h1>
         <p className="text-sm text-slate-500">orlandom@gmail.com</p>
       </div>
-      <div>
+      <div className="flex items-center gap-4">
         <LeadStatus />
+        <EmailActions />
+        <EmailSettings />
       </div>
     </div>
   )
