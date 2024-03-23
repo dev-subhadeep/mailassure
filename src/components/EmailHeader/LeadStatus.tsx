@@ -20,8 +20,10 @@ const LeadStatus = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem>Interested</DropdownMenuItem>
+        <DropdownMenuItem>Meeting Booked</DropdownMenuItem>
+        <DropdownMenuItem>Meeting Completed</DropdownMenuItem>
+        <DropdownMenuItem>Closed</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

@@ -1,12 +1,5 @@
 import React from "react"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+
 import { formatDate } from "@/lib/utils"
 
 interface EmailContentProps {
@@ -26,20 +19,20 @@ const EmailContentCard = ({
 }: EmailContentProps) => {
   const formattedDate = formatDate(new Date(date))
   return (
-    <div className="m-2">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex justify-between text-lg">
+    <div className="m-2 bg-white p-4">
+      <div>
+        <div>
+          <div className="flex justify-between text-lg">
             <span>{subject}</span>
             <span>{formattedDate}</span>
-          </CardTitle>
-          <CardDescription>
+          </div>
+          <div>
             <p>from : {fromEmail} cc: lennon.j@mail.com</p>
             <p>to : {toEmail}</p>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>{body}</CardContent>
-      </Card>
+          </div>
+        </div>
+        <div>{body}</div>
+      </div>
     </div>
   )
 }

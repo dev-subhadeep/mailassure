@@ -11,7 +11,7 @@ import InboxList from "./InboxList"
 
 const InboxColumn = () => {
   return (
-    <div className="p-5 border-r border-slate-100 h-screen">
+    <div className="p-5 border-r border-slate-100 overflow-y-auto">
       <div className="flex justify-between gap-10">
         <div>
           <h1 className="flex items-center gap-2 text-2xl font-bold">

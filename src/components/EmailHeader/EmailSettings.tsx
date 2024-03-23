@@ -19,8 +19,7 @@ const EmailSettings = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
