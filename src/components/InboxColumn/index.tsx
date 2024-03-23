@@ -6,6 +6,8 @@ import SearchBox from "./SearchBox"
 import { Badge } from "../ui/badge"
 import Sort from "./Sort"
 import { Separator } from "../ui/separator"
+import InboxCard from "./InboxCard"
+import InboxList from "./InboxList"
 
 const InboxColumn = () => {
   return (
@@ -39,6 +41,15 @@ const InboxColumn = () => {
         </div>
       </div>
       <Separator />
+      <InboxCard
+        email="Beata@gmail.com"
+        snippet="I've tried a lot and."
+        date="Mar 7"
+        active={false}
+        campaign="Campaign Name"
+        isRead={false}
+      />
+      {/* <InboxList /> */}
     </div>
   )
 }
