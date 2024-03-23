@@ -9,6 +9,7 @@ import ListIcon from "./Icons/ListIcon"
 import InboxIcon from "./Icons/InboxIcon"
 import BarChartIcon from "./Icons/BarChartIcon"
 import DummyUserIcon from "../../public/images/user_icon.png"
+import { Badge } from "./ui/badge"
 
 const Sidebar = () => {
   return (
