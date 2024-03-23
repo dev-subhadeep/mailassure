@@ -14,7 +14,8 @@ const ProfileMenu = () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className="flex flex-row gap-2">
-          <span className="font-bold">Tim's Workspace</span> <ChevronDown />
+          <span className="font-bold">Tim&apos;s Workspace</span>{" "}
+          <ChevronDown />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
