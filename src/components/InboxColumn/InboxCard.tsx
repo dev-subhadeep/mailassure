@@ -29,12 +29,12 @@ const InboxCard = ({
     >
       <div className={cn("w-1 h-auto", active && "bg-blue-400")}>
         {!isRead && !active && (
-          <div className="bg-blue-400 h-3 w-3 rounded-full mt-8"></div>
+          <div className="bg-blue-400 h-2 w-2 rounded-full mt-8"></div>
         )}
       </div>
-      <div className="w-full px-4 py-6">
+      <div className="w-full px-3 py-6">
         <div className="flex justify-between items-center">
-          <span className="text-xl font-semibold text-slate-700">{email}</span>
+          <span className="text-lg font-semibold text-slate-700">{email}</span>
           <span className="text-slate-400">{date}</span>
         </div>
         <div>{snippet}</div>
