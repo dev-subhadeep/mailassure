@@ -21,7 +21,12 @@ const InboxCard = ({
   active,
 }: InboxCardProps) => {
   return (
-    <div className={cn("flex flex-row", active && "bg-blue-50 bg-opacity-20")}>
+    <div
+      className={cn(
+        "flex flex-row border-b border-slate-100",
+        active && "bg-blue-50 bg-opacity-20"
+      )}
+    >
       <div className={cn("w-1 h-auto", active && "bg-blue-400")}>
         {!isRead && !active && (
           <div className="bg-blue-400 h-3 w-3 rounded-full mt-8"></div>
