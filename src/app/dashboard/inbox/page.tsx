@@ -1,3 +1,4 @@
+import ActivitiesSection from "@/components/Activities"
 import EmailContentCard from "@/components/EmailContentCard"
 import EmailHeader from "@/components/EmailHeader"
 import EmailSeparator from "@/components/EmailSeparator"
@@ -42,8 +43,9 @@ const InboxPage = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="border-l border-slate-500 border-opacity-20">
         <LeadDetails />
+        <ActivitiesSection />
       </div>
     </div>
   )
