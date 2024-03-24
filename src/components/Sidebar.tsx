@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import React from "react"
 import Logo from "../../public/Logo.png"
@@ -9,34 +11,48 @@ import ListIcon from "./Icons/ListIcon"
 import InboxIcon from "./Icons/InboxIcon"
 import BarChartIcon from "./Icons/BarChartIcon"
 import DummyUserIcon from "../../public/images/user_icon.png"
-import { Badge } from "./ui/badge"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 const Sidebar = () => {
+  const pathname = usePathname()
   return (
-    <nav className="w-[56px] flex flex-col items-center justify-between h-screen border-r border-slate-100 px-2 py-4">
+    <nav className="w-[56px] flex flex-col items-center justify-between h-screen border-r border-slate-500 border-opacity-20 px-2 py-4">
       <div className="flex flex-col items-center">
         <div className="mb-[100px]">
-          <Image src={Logo} height={32} width={32} alt="logo" />
+          <Image
+            src={Logo}
+            height={32}
+            width={32}
+            alt="logo"
+            className="dark:invert"
+          />
         </div>
         <div className="flex flex-col justify-between h-[400px]">
-          <Button variant="ghost">
+          <Link href="/">
             <HomeIcon />
-          </Button>
-          <Button variant="ghost">
+          </Link>
+          <Link
+            href="/"
+            className={cn(
+              pathname.includes("inbox") && "brightness-50 dark:brightness-150"
+            )}
+          >
             <EmailIcon />
-          </Button>
-          <Button variant="ghost">
+          </Link>
+          <Link href="/">
             <SendIcon />
-          </Button>
-          <Button variant="ghost">
+          </Link>
+          <Link href="/">
             <ListIcon />
-          </Button>
-          <Button variant="ghost">
+          </Link>
+          <Link href="/">
             <InboxIcon />
-          </Button>
-          <Button variant="ghost">
+          </Link>
+          <Link href="/">
             <BarChartIcon />
-          </Button>
+          </Link>
         </div>
       </div>
       <div className="justify-self-end">

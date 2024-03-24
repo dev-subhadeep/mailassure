@@ -19,7 +19,7 @@ const EmailContentCard = ({
 }: EmailContentProps) => {
   const formattedDate = formatDate(new Date(date))
   return (
-    <div className=" bg-white p-4 rounded-md border border-slate-200">
+    <div className=" bg-white bg-opacity-10 p-4 rounded-md border border-slate-200">
       <div>
         <div>
           <div className="flex justify-between text-lg">

@@ -13,7 +13,7 @@ const InboxPage = () => {
       <div>
         <InboxColumn />
       </div>
-      <div className="flex-grow bg-gray-100">
+      <div className="flex-grow">
         <div className="flex flex-col h-full justify-between">
           <EmailHeader />
           <div className="flex-grow p-4">

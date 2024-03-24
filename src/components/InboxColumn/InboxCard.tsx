@@ -23,7 +23,7 @@ const InboxCard = ({
   return (
     <div
       className={cn(
-        "flex flex-row border-b border-slate-100",
+        "flex flex-row border-b border-slate-500 border-opacity-20",
         active && "bg-blue-50 bg-opacity-20"
       )}
     >
@@ -34,7 +34,7 @@ const InboxCard = ({
       </div>
       <div className="w-full px-3 py-6">
         <div className="flex justify-between items-center">
-          <span className="text-lg font-semibold text-slate-700">{email}</span>
+          <span className="text-lg font-semibold text-opacity-90">{email}</span>
           <span className="text-slate-400">{date}</span>
         </div>
         <div>{snippet}</div>

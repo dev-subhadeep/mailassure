@@ -11,7 +11,7 @@ import InboxList from "./InboxList"
 
 const InboxColumn = () => {
   return (
-    <div className="p-5 border-r border-slate-100 overflow-y-auto">
+    <div className="p-5 border-r border-slate-500 border-opacity-20 overflow-y-auto h-full">
       <div className="flex justify-between gap-10">
         <div>
           <h1 className="flex items-center gap-2 text-2xl font-bold">
@@ -28,10 +28,15 @@ const InboxColumn = () => {
           </Button>
         </div>
       </div>
-      <SearchBox />
+      <div className="mt-4">
+        <SearchBox />
+      </div>
       <div className="flex justify-between items-center py-4">
         <div>
-          <Badge variant={"secondary"} className="text-blue-600 font-extrabold">
+          <Badge
+            variant={"secondary"}
+            className="text-blue-600 font-extrabold text-lg"
+          >
             26
           </Badge>{" "}
           New Replies
