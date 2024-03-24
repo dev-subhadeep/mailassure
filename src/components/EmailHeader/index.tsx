@@ -5,7 +5,7 @@ import EmailSettings from "./EmailSettings"
 
 const EmailHeader = () => {
   return (
-    <div className="flex justify-between p-4 items-center">
+    <div className="flex justify-between p-4 items-center border-b border-slate-500 border-opacity-20">
       <div>
         <h1>Orlando</h1>
         <p className="text-sm text-slate-500">orlandom@gmail.com</p>

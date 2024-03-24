@@ -18,6 +18,7 @@ const InboxPage = () => {
         <div className="flex flex-col h-full justify-between">
           <EmailHeader />
           <div className="flex-grow p-4">
+            <EmailSeparator text="Today" />
             <EmailContentCard
               subject="Shaw - following up"
               date="2023-11-21T00:39:19.000Z"
@@ -25,7 +26,7 @@ const InboxPage = () => {
               fromEmail="lennon@gmail.com"
               toEmail="jeanne@gmail.com"
             />
-            <EmailSeparator />
+            <EmailSeparator text="Yesterday" />
             <EmailContentCard
               subject="Shaw - following up"
               date="2023-11-21T00:39:19.000Z"
