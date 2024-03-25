@@ -8,7 +8,7 @@ import Sort from "./Sort"
 import { Separator } from "../ui/separator"
 import InboxCard from "./InboxCard"
 
-const InboxColumn = () => {
+const InboxColumn = ({ emails }: any) => {
   return (
     <div className="p-5 border-r border-slate-500 border-opacity-20 overflow-y-auto h-full">
       <div className="flex justify-between gap-10">
@@ -45,14 +45,17 @@ const InboxColumn = () => {
         </div>
       </div>
       <Separator />
-      <InboxCard
-        email="Beata@gmail.com"
-        snippet="I've tried a lot and."
-        date="Mar 7"
-        active={true}
-        campaign="Campaign Name"
-        isRead={false}
-      />
+      {emails?.map((email: any) => (
+        <InboxCard
+          key={email.id}
+          email={email.fromEmail}
+          snippet={email.subject}
+          date="Mar 7"
+          active={false}
+          campaign="Campaign Name"
+          isRead={email.isRead}
+        />
+      ))}
       {/* <InboxList /> */}
     </div>
   )

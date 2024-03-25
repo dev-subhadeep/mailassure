@@ -33,8 +33,6 @@ export function formatDate(date: Date): string {
   return `${day} ${monthNames[monthIndex]} ${year} : ${formattedHours}:${formattedMinutes}${ampm}`
 }
 
-// Example usage
-// const now = new Date()
-// const formattedDate = formatDate(now)
-
-// console.log(formattedDate) // Output: (e.g.) 23 Mar 2024 : 20:29 IST
+export const getToken = () => {
+  return localStorage.getItem("token") || ""
+}

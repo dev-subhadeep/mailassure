@@ -10,17 +10,44 @@ import InboxColumn from "@/components/InboxColumn"
 import LeadDetails from "@/components/LeadDetails"
 import ReplyBox from "@/components/ReplyBox"
 import { Button } from "@/components/ui/button"
+import { getToken } from "@/lib/utils"
+import { getEmails } from "@/lib/data"
 import React, { useEffect, useState } from "react"
+import { redirect } from "next/navigation"
 
 const InboxPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [showReplyBox, setShowReplyBox] = useState(false)
+  const [emails, setEmails] = useState([])
 
   const handleKeyPress = (e: KeyboardEvent) => {
     if (showReplyBox === false && showDeleteModal === false && e.key === "d") {
       setShowDeleteModal(true)
     }
   }
+
+  useEffect(() => {
+    const token = getToken()
+    if (token) {
+      const fetchEmails = async () => {
+        const res = await fetch(
+          "https://hiring.reachinbox.xyz/api/v1/onebox/list",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        const data = await res.json()
+        setEmails(data.data)
+        console.log(data.data)
+      }
+      fetchEmails()
+    } else {
+      redirect("/")
+    }
+  }, [])
 
   useEffect(() => {
     if (showReplyBox) return
@@ -31,7 +58,7 @@ const InboxPage = () => {
   return (
     <div className="flex h-[calc(100vh-68px)]">
       <div>
-        <InboxColumn />
+        <InboxColumn emails={emails} />
       </div>
       <div className="flex-grow">
         <div className="flex flex-col h-full justify-between">
