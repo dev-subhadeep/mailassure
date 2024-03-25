@@ -8,21 +8,26 @@ import EmailSeparator from "@/components/EmailSeparator"
 import ReplyIcon from "@/components/Icons/ReplyIcon"
 import InboxColumn from "@/components/InboxColumn"
 import LeadDetails from "@/components/LeadDetails"
+import ReplyBox from "@/components/ReplyBox"
 import { Button } from "@/components/ui/button"
 import React, { useEffect, useState } from "react"
 
 const InboxPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [showReplyBox, setShowReplyBox] = useState(false)
 
   const handleKeyPress = (e: KeyboardEvent) => {
-    if (e.key === "d") {
+    if (showReplyBox === false && showDeleteModal === false && e.key === "d") {
       setShowDeleteModal(true)
     }
   }
 
   useEffect(() => {
+    if (showReplyBox) return
     window.addEventListener("keydown", handleKeyPress)
-  }, [])
+
+    return () => window.removeEventListener("keydown", handleKeyPress)
+  }, [showReplyBox])
   return (
     <div className="flex h-[calc(100vh-68px)]">
       <div>
@@ -49,12 +54,21 @@ const InboxPage = () => {
               toEmail="jeanne@gmail.com"
             />
           </div>
-          <div className="p-2">
-            <Button variant="primary" size="lg">
-              <span className="flex gap-2 items-center">
-                <ReplyIcon /> Reply
-              </span>
-            </Button>
+          <div className="p-4">
+            {showReplyBox && (
+              <ReplyBox closeReplyBox={() => setShowReplyBox(false)} />
+            )}
+            {!showReplyBox && (
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => setShowReplyBox(true)}
+              >
+                <span className="flex gap-2 items-center">
+                  <ReplyIcon /> Reply
+                </span>
+              </Button>
+            )}
           </div>
         </div>
       </div>
