@@ -1,4 +1,7 @@
+"use client"
+
 import ActivitiesSection from "@/components/Activities"
+import DeleteDialogModal from "@/components/DeleteModal"
 import EmailContentCard from "@/components/EmailContentCard"
 import EmailHeader from "@/components/EmailHeader"
 import EmailSeparator from "@/components/EmailSeparator"
@@ -6,9 +9,20 @@ import ReplyIcon from "@/components/Icons/ReplyIcon"
 import InboxColumn from "@/components/InboxColumn"
 import LeadDetails from "@/components/LeadDetails"
 import { Button } from "@/components/ui/button"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 const InboxPage = () => {
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+
+  const handleKeyPress = (e: KeyboardEvent) => {
+    if (e.key === "d") {
+      setShowDeleteModal(true)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress)
+  }, [])
   return (
     <div className="flex h-[calc(100vh-68px)]">
       <div>
@@ -48,6 +62,10 @@ const InboxPage = () => {
         <LeadDetails />
         <ActivitiesSection />
       </div>
+      <DeleteDialogModal
+        isOpen={showDeleteModal}
+        setIsOpen={() => setShowDeleteModal(false)}
+      />
     </div>
   )
 }

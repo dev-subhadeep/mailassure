@@ -7,7 +7,6 @@ import { Badge } from "../ui/badge"
 import Sort from "./Sort"
 import { Separator } from "../ui/separator"
 import InboxCard from "./InboxCard"
-import InboxList from "./InboxList"
 
 const InboxColumn = () => {
   return (
@@ -50,7 +49,7 @@ const InboxColumn = () => {
         email="Beata@gmail.com"
         snippet="I've tried a lot and."
         date="Mar 7"
-        active={false}
+        active={true}
         campaign="Campaign Name"
         isRead={false}
       />

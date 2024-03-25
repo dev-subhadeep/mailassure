@@ -24,7 +24,7 @@ const InboxCard = ({
     <div
       className={cn(
         "flex flex-row border-b border-slate-500 border-opacity-20",
-        active && "bg-blue-50 bg-opacity-20"
+        active && "bg-blue-50 bg-opacity-20 dark:bg-transparent"
       )}
     >
       <div className={cn("w-1 h-auto", active && "bg-blue-400")}>
