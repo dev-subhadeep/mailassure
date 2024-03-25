@@ -25,8 +25,13 @@ const InboxPage = () => {
   const threadId = searchParams.get("thread") || null
 
   const handleKeyPress = (e: KeyboardEvent) => {
-    if (showReplyBox === false && showDeleteModal === false && e.key === "d") {
+    if (e.key === "d") {
+      if (showReplyBox) return
       setShowDeleteModal(true)
+    }
+    if (e.key === "r") {
+      if (showDeleteModal) return
+      setShowReplyBox(true)
     }
   }
 
