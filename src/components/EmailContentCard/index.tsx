@@ -19,7 +19,7 @@ const EmailContentCard = ({
 }: EmailContentProps) => {
   const formattedDate = formatDate(new Date(date))
   return (
-    <div className=" bg-white bg-opacity-10 p-4 rounded-md border border-slate-500 border-opacity-20">
+    <div className=" bg-white bg-opacity-10 p-4 rounded-md border border-slate-500 border-opacity-20 mt-4">
       <div>
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
@@ -29,7 +29,7 @@ const EmailContentCard = ({
           <div>from : {fromEmail} cc: lennon.j@mail.com</div>
           <div>to : {toEmail}</div>
         </div>
-        <div className="mt-10">{body}</div>
+        <div className="mt-10" dangerouslySetInnerHTML={{ __html: body }}></div>
       </div>
     </div>
   )

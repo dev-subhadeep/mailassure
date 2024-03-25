@@ -5,24 +5,28 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 interface InboxCardProps {
+  id: string
   email: string
   snippet: string
   date: string
   isRead: boolean
   campaign?: string
   active?: boolean
+  threadId?: string
 }
 
 const InboxCard = ({
+  id,
   email,
   snippet,
   date,
   isRead,
   campaign,
   active,
+  threadId,
 }: InboxCardProps) => {
   return (
-    <Link href={"/"}>
+    <Link href={`/dashboard/inbox?thread=${threadId}`}>
       <div
         className={cn(
           "flex flex-row border-b border-slate-500 border-opacity-20",

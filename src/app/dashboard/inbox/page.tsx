@@ -13,18 +13,46 @@ import { Button } from "@/components/ui/button"
 import { getToken } from "@/lib/utils"
 import { getEmails } from "@/lib/data"
 import React, { useEffect, useState } from "react"
-import { redirect } from "next/navigation"
+import { redirect, useSearchParams } from "next/navigation"
+import { Email } from "@/lib/types"
 
 const InboxPage = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [showReplyBox, setShowReplyBox] = useState(false)
   const [emails, setEmails] = useState([])
+  const [thread, setThread] = useState([])
+  const searchParams = useSearchParams()
+  const threadId = searchParams.get("thread") || null
 
   const handleKeyPress = (e: KeyboardEvent) => {
     if (showReplyBox === false && showDeleteModal === false && e.key === "d") {
       setShowDeleteModal(true)
     }
   }
+
+  useEffect(() => {
+    if (threadId) {
+      const token = getToken()
+      if (token) {
+        const fetchEmails = async () => {
+          const res = await fetch(
+            `https://hiring.reachinbox.xyz/api/v1/onebox/messages/${threadId}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          const data = await res.json()
+          setThread(data.data)
+        }
+        fetchEmails()
+      } else {
+        redirect("/")
+      }
+    }
+  }, [threadId])
 
   useEffect(() => {
     const token = getToken()
@@ -41,7 +69,6 @@ const InboxPage = () => {
         )
         const data = await res.json()
         setEmails(data.data)
-        console.log(data.data)
       }
       fetchEmails()
     } else {
@@ -64,22 +91,15 @@ const InboxPage = () => {
         <div className="flex flex-col h-full justify-between">
           <EmailHeader />
           <div className="flex-grow p-4">
-            <EmailSeparator text="Today" />
-            <EmailContentCard
-              subject="Shaw - following up"
-              date="2023-11-21T00:39:19.000Z"
-              body="hey there"
-              fromEmail="lennon@gmail.com"
-              toEmail="jeanne@gmail.com"
-            />
-            <EmailSeparator text="Yesterday" />
-            <EmailContentCard
-              subject="Shaw - following up"
-              date="2023-11-21T00:39:19.000Z"
-              body="hey there"
-              fromEmail="lennon@gmail.com"
-              toEmail="jeanne@gmail.com"
-            />
+            {thread.map((threadItem: Email) => (
+              <EmailContentCard
+                subject={threadItem.subject}
+                date={threadItem.sentAt}
+                body={threadItem.body}
+                fromEmail={threadItem.fromEmail}
+                toEmail={threadItem.toEmail}
+              />
+            ))}
           </div>
           <div className="p-4">
             {showReplyBox && (

@@ -48,12 +48,14 @@ const InboxColumn = ({ emails }: any) => {
       {emails?.map((email: any) => (
         <InboxCard
           key={email.id}
+          id={email.id}
           email={email.fromEmail}
           snippet={email.subject}
           date="Mar 7"
           active={false}
           campaign="Campaign Name"
           isRead={email.isRead}
+          threadId={email.threadId}
         />
       ))}
       {/* <InboxList /> */}
