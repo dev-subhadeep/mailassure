@@ -1,15 +1,19 @@
 "use client"
 import React, { useState } from "react"
 import { Button } from "../ui/button"
-import { X } from "lucide-react"
+import { deleteThread } from "@/lib/data"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const DialogModal = ({
   isOpen,
-  setIsOpen,
+  close,
 }: {
   isOpen: boolean
-  setIsOpen: React.MouseEventHandler<HTMLButtonElement>
+  close: React.MouseEventHandler<HTMLButtonElement>
 }) => {
+  const searchParams = useSearchParams()
+  const threadId = Number(searchParams.get("thread"))
+  const router = useRouter()
   return (
     <>
       {isOpen && (
@@ -24,10 +28,20 @@ const DialogModal = ({
               </p>
             </div>
             <div className="flex justify-between">
-              <Button size={"lg"} onClick={setIsOpen}>
+              <Button size={"lg"} onClick={close}>
                 Cancel
               </Button>
-              <Button size={"lg"} variant={"danger"}>
+              <Button
+                size={"lg"}
+                variant={"danger"}
+                onClick={async () => {
+                  const res = await deleteThread(threadId)
+                  if (res.status === 200) {
+                    alert("Deleted thread successfully")
+                    router.push("/dashboard/inbox")
+                  }
+                }}
+              >
                 Delete
               </Button>
             </div>

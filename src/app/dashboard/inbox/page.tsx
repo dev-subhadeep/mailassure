@@ -98,6 +98,7 @@ const InboxPage = () => {
           <div className="flex-grow p-4">
             {thread.map((threadItem: Email) => (
               <EmailContentCard
+                key={threadItem.id}
                 subject={threadItem.subject}
                 date={threadItem.sentAt}
                 body={threadItem.body}
@@ -130,7 +131,7 @@ const InboxPage = () => {
       </div>
       <DeleteDialogModal
         isOpen={showDeleteModal}
-        setIsOpen={() => setShowDeleteModal(false)}
+        close={() => setShowDeleteModal(false)}
       />
     </div>
   )
