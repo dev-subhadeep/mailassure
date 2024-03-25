@@ -23,6 +23,7 @@ const InboxList = async () => {
     <div>
       {data?.map((item: DataProps) => (
         <InboxCard
+          id={item.id}
           key={item.id}
           email={item.fromEmail}
           date=""
