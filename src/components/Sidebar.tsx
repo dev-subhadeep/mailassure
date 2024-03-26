@@ -33,12 +33,7 @@ const Sidebar = () => {
           <Link href="/">
             <HomeIcon />
           </Link>
-          <Link
-            href="/"
-            className={cn(
-              pathname.includes("inbox") && "brightness-50 dark:brightness-150"
-            )}
-          >
+          <Link href="/">
             <EmailIcon />
           </Link>
           <Link href="/">
@@ -47,7 +42,12 @@ const Sidebar = () => {
           <Link href="/">
             <ListIcon />
           </Link>
-          <Link href="/">
+          <Link
+            href="/"
+            className={cn(
+              pathname.includes("inbox") && "brightness-50 dark:brightness-150"
+            )}
+          >
             <InboxIcon />
           </Link>
           <Link href="/">
