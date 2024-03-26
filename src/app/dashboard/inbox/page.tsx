@@ -93,19 +93,21 @@ const InboxPage = () => {
         <InboxColumn emails={emails} />
       </div>
       <div className="flex-grow">
-        <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col h-full justify-start">
           <EmailHeader />
-          <div className="flex-grow p-4">
-            {thread.map((threadItem: Email) => (
-              <EmailContentCard
-                key={threadItem.id}
-                subject={threadItem.subject}
-                date={threadItem.sentAt}
-                body={threadItem.body}
-                fromEmail={threadItem.fromEmail}
-                toEmail={threadItem.toEmail}
-              />
-            ))}
+          <div className="h-[calc(80vh)] overflow-y-auto">
+            <div className="flex-grow p-4">
+              {thread.map((threadItem: Email) => (
+                <EmailContentCard
+                  key={threadItem.id}
+                  subject={threadItem.subject}
+                  date={threadItem.sentAt}
+                  body={threadItem.body}
+                  fromEmail={threadItem.fromEmail}
+                  toEmail={threadItem.toEmail}
+                />
+              ))}
+            </div>
           </div>
           <div className="p-4">
             {showReplyBox && (
@@ -125,7 +127,7 @@ const InboxPage = () => {
           </div>
         </div>
       </div>
-      <div className="border-l border-slate-500 border-opacity-20">
+      <div className="border-l border-slate-500 border-opacity-20 overflow-y-auto">
         <LeadDetails />
         <ActivitiesSection />
       </div>

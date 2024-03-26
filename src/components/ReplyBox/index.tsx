@@ -6,7 +6,7 @@ import DownArrowIcon from "../Icons/DownArrowIcon"
 
 const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
   return (
-    <div className="border border-slate-500 border-opacity-20 rounded-md">
+    <div className="border border-slate-500 border-opacity-20 rounded-md  bg-gray-500 bg-opacity-20">
       <div className="px-6 py-2 border-b border-slate-500 border-opacity-20 flex justify-between items-center font-bold">
         Reply
         <Button size={"sm"} variant={"link"} onClick={closeReplyBox}>
