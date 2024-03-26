@@ -13,7 +13,7 @@ import { Button } from "../ui/button"
 
 const SignUpCard = () => {
   return (
-    <Card className="p-10">
+    <Card className="p-10 bg-gray-600 bg-opacity-20">
       <CardHeader>
         <CardTitle className="text-center">Create a new account</CardTitle>
       </CardHeader>
