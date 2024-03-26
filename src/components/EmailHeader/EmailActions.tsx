@@ -9,6 +9,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Tag from "../tag"
 import { ChevronDown } from "lucide-react"
+import PencilIcon from "../Icons/PencilIcon"
+import RemoveUserIcon from "../Icons/RemoveUserIcon"
+import ClockIcon from "../Icons/ClockIcon"
+import TrashIcon from "../Icons/TrashIcon"
+import UnreadIcon from "../Icons/UnreadIcon"
 
 const EmailActions = () => {
   return (
@@ -20,8 +25,31 @@ const EmailActions = () => {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>Unread</DropdownMenuItem>
-        <DropdownMenuItem>Delete</DropdownMenuItem>
+        <DropdownMenuItem>
+          <span className="flex gap-3 items-center">
+            <UnreadIcon /> Mark as unread
+          </span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span className="flex gap-3 items-center">
+            <PencilIcon /> Edit lead
+          </span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span className="flex gap-3 items-center">
+            <RemoveUserIcon /> Remove lead
+          </span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span className="flex gap-3 items-center">
+            <ClockIcon /> Set reminder
+          </span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <span className="flex gap-3 items-center">
+            <TrashIcon /> Delete
+          </span>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
