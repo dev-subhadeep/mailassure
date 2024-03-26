@@ -35,6 +35,10 @@ const InboxPage = () => {
     }
   }
 
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false)
+  }
+
   useEffect(() => {
     if (threadId) {
       const token = getToken()
@@ -57,7 +61,7 @@ const InboxPage = () => {
         redirect("/")
       }
     }
-  }, [threadId])
+  }, [threadId, showReplyBox])
 
   useEffect(() => {
     const token = getToken()
@@ -79,7 +83,7 @@ const InboxPage = () => {
     } else {
       redirect("/")
     }
-  }, [])
+  }, [showDeleteModal, showReplyBox])
 
   useEffect(() => {
     if (showReplyBox) return
@@ -131,10 +135,7 @@ const InboxPage = () => {
         <LeadDetails />
         <ActivitiesSection />
       </div>
-      <DeleteDialogModal
-        isOpen={showDeleteModal}
-        close={() => setShowDeleteModal(false)}
-      />
+      <DeleteDialogModal isOpen={showDeleteModal} close={closeDeleteModal} />
     </div>
   )
 }

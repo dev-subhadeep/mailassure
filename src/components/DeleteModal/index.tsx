@@ -9,7 +9,8 @@ const DialogModal = ({
   close,
 }: {
   isOpen: boolean
-  close: React.MouseEventHandler<HTMLButtonElement>
+  close: () => void
+  // close: React.MouseEventHandler<HTMLButtonElement>
 }) => {
   const searchParams = useSearchParams()
   const threadId = Number(searchParams.get("thread"))
@@ -36,9 +37,9 @@ const DialogModal = ({
                 variant={"danger"}
                 onClick={async () => {
                   const res = await deleteThread(threadId)
-                  if (res.status === 200) {
-                    alert("Deleted thread successfully")
+                  if (res.data.status === 200) {
                     router.push("/dashboard/inbox")
+                    close()
                   }
                 }}
               >

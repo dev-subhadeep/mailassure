@@ -35,3 +35,23 @@ export async function deleteThread(id: number) {
     throw new Error(error?.message)
   }
 }
+
+export async function replyToThread(id: number, body: string) {
+  const token = getToken()
+  try {
+    const data = await axios.post(
+      `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${id}`,
+
+      {
+        data: body,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    return data
+  } catch (error: any) {
+    throw new Error(error?.message)
+  }
+}

@@ -1,10 +1,20 @@
-import React from "react"
+"use client"
+
+import React, { useState } from "react"
 import { Button } from "../ui/button"
 import { Eye, X } from "lucide-react"
 import ThunderIcon from "../Icons/ThunderIcon"
 import DownArrowIcon from "../Icons/DownArrowIcon"
+import { useRouter, useSearchParams } from "next/navigation"
+import { replyToThread } from "@/lib/data"
 
 const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
+  const [emailBody, setEmailBody] = useState("")
+  const searchParams = useSearchParams()
+
+  const threadId = Number(searchParams.get("thread"))
+  const router = useRouter()
+
   return (
     <div className="border border-slate-500 border-opacity-20 rounded-md  bg-gray-500 bg-opacity-20">
       <div className="px-6 py-2 border-b border-slate-500 border-opacity-20 flex justify-between items-center font-bold">
@@ -28,11 +38,23 @@ const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
         <textarea
           placeholder="Hi Jeanne,"
           className="w-full h-[200px] bg-transparent outline-none"
+          onChange={(e) => setEmailBody(e.target.value)}
         ></textarea>
       </div>
       <div className="flex gap-2 items-center px-4 py-2">
         <Button variant="primary">
-          <span className="mr-4">Send</span>
+          <span
+            className="mr-4"
+            onClick={async () => {
+              const res = await replyToThread(threadId, emailBody)
+              if (res.data.status === 200) {
+                router.push("/dashboard/inbox")
+                closeReplyBox()
+              }
+            }}
+          >
+            Send
+          </span>
           <DownArrowIcon />
         </Button>
         <Button variant="ghost">
