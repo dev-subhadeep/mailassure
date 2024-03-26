@@ -113,22 +113,24 @@ const InboxPage = () => {
               ))}
             </div>
           </div>
-          <div className="p-4">
-            {showReplyBox && (
-              <ReplyBox closeReplyBox={() => setShowReplyBox(false)} />
-            )}
-            {!showReplyBox && (
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={() => setShowReplyBox(true)}
-              >
-                <span className="flex gap-2 items-center">
-                  <ReplyIcon /> Reply
-                </span>
-              </Button>
-            )}
-          </div>
+          {threadId && (
+            <div className="p-4">
+              {showReplyBox && (
+                <ReplyBox closeReplyBox={() => setShowReplyBox(false)} />
+              )}
+              {!showReplyBox && (
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => setShowReplyBox(true)}
+                >
+                  <span className="flex gap-2 items-center">
+                    <ReplyIcon /> Reply
+                  </span>
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </div>
       <div className="border-l border-slate-500 border-opacity-20 overflow-y-auto">
