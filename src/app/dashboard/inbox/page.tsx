@@ -98,37 +98,49 @@ const InboxPage = () => {
       </div>
       <div className="flex-grow">
         <div className="flex flex-col h-full justify-start">
-          <EmailHeader />
-          <div className="h-[calc(80vh)] overflow-y-auto">
-            <div className="flex-grow p-4">
-              {thread.map((threadItem: Email) => (
-                <EmailContentCard
-                  key={threadItem.id}
-                  subject={threadItem.subject}
-                  date={threadItem.sentAt}
-                  body={threadItem.body}
-                  fromEmail={threadItem.fromEmail}
-                  toEmail={threadItem.toEmail}
-                />
-              ))}
-            </div>
-          </div>
-          {threadId && (
-            <div className="p-4">
-              {showReplyBox && (
-                <ReplyBox closeReplyBox={() => setShowReplyBox(false)} />
+          {threadId ? (
+            <>
+              <EmailHeader />
+              <div className="h-[calc(80vh)] overflow-y-auto">
+                <div className="flex-grow p-4">
+                  {thread.map((threadItem: Email) => (
+                    <EmailContentCard
+                      key={threadItem.id}
+                      subject={threadItem.subject}
+                      date={threadItem.sentAt}
+                      body={threadItem.body}
+                      fromEmail={threadItem.fromEmail}
+                      toEmail={threadItem.toEmail}
+                    />
+                  ))}
+                </div>
+              </div>
+              {threadId && (
+                <div className="p-4">
+                  {showReplyBox && (
+                    <ReplyBox closeReplyBox={() => setShowReplyBox(false)} />
+                  )}
+                  {!showReplyBox && (
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      onClick={() => setShowReplyBox(true)}
+                    >
+                      <span className="flex gap-2 items-center">
+                        <ReplyIcon /> Reply
+                      </span>
+                    </Button>
+                  )}
+                </div>
               )}
-              {!showReplyBox && (
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={() => setShowReplyBox(true)}
-                >
-                  <span className="flex gap-2 items-center">
-                    <ReplyIcon /> Reply
-                  </span>
-                </Button>
-              )}
+            </>
+          ) : (
+            <div className="flex justify-center items-center h-full">
+              <h1 className="text-4xl">
+                Click on an email thread to get started.
+                <br />
+                ... Or wait for emails to show up.
+              </h1>
             </div>
           )}
         </div>
