@@ -7,6 +7,12 @@ import ThunderIcon from "../Icons/ThunderIcon"
 import DownArrowIcon from "../Icons/DownArrowIcon"
 import { useRouter, useSearchParams } from "next/navigation"
 import { replyToThread } from "@/lib/data"
+import SpellCheckIcon from "../Icons/SpellCheckIcon"
+import Unfold from "../Icons/Unfold"
+import PersonRemoveIcon from "../Icons/PersonRemoveIcon"
+import EmojiIcon from "../Icons/EmojiIcon"
+import LinkIcon from "../Icons/LinkIcon"
+import ImageIcon from "../Icons/ImageIcon"
 
 const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
   const [emailBody, setEmailBody] = useState("")
@@ -41,7 +47,7 @@ const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
           onChange={(e) => setEmailBody(e.target.value)}
         ></textarea>
       </div>
-      <div className="flex gap-2 items-center px-4 py-2">
+      <div className="flex gap-1 items-center px-4 py-2">
         <Button variant="primary">
           <span
             className="mr-4"
@@ -62,6 +68,24 @@ const ReplyBox = ({ closeReplyBox }: { closeReplyBox: () => void }) => {
         </Button>
         <Button variant="ghost">
           <Eye /> <span className="ml-4">Preview Email</span>
+        </Button>
+        <Button variant={"ghost"}>
+          <SpellCheckIcon />
+        </Button>
+        <Button variant={"ghost"}>
+          <LinkIcon />
+        </Button>
+        <Button variant={"ghost"}>
+          <ImageIcon />
+        </Button>
+        <Button variant={"ghost"}>
+          <EmojiIcon />
+        </Button>
+        <Button variant={"ghost"}>
+          <PersonRemoveIcon />
+        </Button>
+        <Button variant={"ghost"}>
+          <Unfold />
         </Button>
       </div>
     </div>
